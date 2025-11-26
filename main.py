@@ -331,16 +331,16 @@ class RandomStudentPickerApp(ctk.CTk):
             self.currentCenterNameIndex = random.randint(0, totalNames - 1)
 
             if self.selectedStudentForSpin is not None:
-                target_name = self.selectedStudentForSpin.name
-                indices = [i for i, name in enumerate(self.spinNameList) if name == target_name]
+                targetName = self.selectedStudentForSpin.name
+                indices = [i for i, name in enumerate(self.spinNameList) if name == targetName]
 
                 if indices:
-                    def forward_distance(target_idx: int, start_idx: int, size: int) -> int:
-                        return (target_idx - start_idx) % size
+                    def forwardDistance(targetIndex: int, startIndex: int, size: int) -> int:
+                        return (targetIndex - startIndex) % size
 
-                    min_forward = min(forward_distance(idx, self.currentCenterNameIndex, totalNames) for idx in indices)
-                    min_full_spins = 2
-                    self.totalSpinFrameCount = min_full_spins * totalNames + min_forward
+                    minForward = min(forwardDistance(idx, self.currentCenterNameIndex, totalNames) for idx in indices)
+                    minFullSpins = 2
+                    self.totalSpinFrameCount = minFullSpins * totalNames + minForward
                 else:
                     self.totalSpinFrameCount = totalNames * 2
             else:
